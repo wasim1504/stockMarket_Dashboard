@@ -7,6 +7,7 @@ import GlobalStyles from "./styles/GlobalStyles";
 import Dashboard from "./pages/Dashboard";
 
 import Login from "./pages/Login";
+import Signup from "./pages/SignUp";
 import PageNotFound from "./pages/PageNotFound";
 import AppLayout from "./ui/AppLayout";
 
@@ -42,6 +43,7 @@ function App() {
               <Route path="dashboard" element={<Dashboard />} />
             </Route>
             <Route path="login" element={<Login />} />
+            <Route path="signup" element={<Signup />} />
             <Route path="*" element={<PageNotFound />} />
           </Routes>
         </BrowserRouter>

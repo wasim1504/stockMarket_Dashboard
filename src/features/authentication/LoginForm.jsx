@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import Button from "../../ui/Button";
 import Form from "../../ui/Form";
 import Input from "../../ui/Input";
@@ -53,6 +54,11 @@ function LoginForm() {
         <Button size="large" disabled={isLoading}>
           {!isLoading ? "Log in" : <SpinnerMini />}
         </Button>
+      </FormRowVertical>
+      <FormRowVertical>
+        <p>
+          Don't have an account? <Link to="/signup">Sign up</Link>
+        </p>
       </FormRowVertical>
     </Form>
   );

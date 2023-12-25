@@ -1,11 +1,10 @@
 import { useForm } from "react-hook-form";
 import Button from "../../ui/Button";
 import Form from "../../ui/Form";
-import FormRow from "../../ui/FormRow";
 import Input from "../../ui/Input";
 import { useSignup } from "./useSignup";
-
-// Email regex: /\S+@\S+\.\S+/
+import { Link } from "react-router-dom";
+import FormRowVertical from "../../ui/FormRowVertical";
 
 function SignupForm() {
   const { signup, isLoading } = useSignup();
@@ -23,16 +22,16 @@ function SignupForm() {
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
-      <FormRow label="Full name" error={errors?.fullName?.message}>
+      <FormRowVertical label="Full name" error={errors?.fullName?.message}>
         <Input
           type="text"
           id="fullName"
           disabled={isLoading}
           {...register("fullName", { required: "This field is required" })}
         />
-      </FormRow>
+      </FormRowVertical>
 
-      <FormRow label="Email address" error={errors?.email?.message}>
+      <FormRowVertical label="Email address" error={errors?.email?.message}>
         <Input
           type="email"
           id="email"
@@ -45,9 +44,9 @@ function SignupForm() {
             },
           })}
         />
-      </FormRow>
+      </FormRowVertical>
 
-      <FormRow
+      <FormRowVertical
         label="Password (min 8 characters)"
         error={errors?.password?.message}
       >
@@ -63,9 +62,12 @@ function SignupForm() {
             },
           })}
         />
-      </FormRow>
+      </FormRowVertical>
 
-      <FormRow label="Repeat password" error={errors?.passwordConfirm?.message}>
+      <FormRowVertical
+        label="Repeat password"
+        error={errors?.passwordConfirm?.message}
+      >
         <Input
           type="password"
           id="passwordConfirm"
@@ -76,20 +78,18 @@ function SignupForm() {
               value === getValues().password || "Passwords need to match",
           })}
         />
-      </FormRow>
+      </FormRowVertical>
 
-      <FormRow>
+      <FormRowVertical>
         {/* type is an HTML attribute! */}
-        <Button
-          variation="secondary"
-          type="reset"
-          disabled={isLoading}
-          onClick={reset}
-        >
-          Cancel
+        <p>
+          Already a user? <Link to="/login">Sign in</Link>
+        </p>
+
+        <Button size="large" disabled={isLoading}>
+          Create new user
         </Button>
-        <Button disabled={isLoading}>Create new user</Button>
-      </FormRow>
+      </FormRowVertical>
     </Form>
   );
 }
