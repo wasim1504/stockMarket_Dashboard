@@ -1,21 +1,23 @@
 import axios from "axios";
+import { toast } from "react-hot-toast";
+const baseUrl = "https://cloud.iexapis.com/stable";
+const apiKey = "pk_8b66a7c668ad437c92721186d102732d";
 
-export async function fetchFilteredData({ name, range }) {
-  const apiUrl = `https://cloud.iexapis.com/stable/stock/${name}/chart/${range}`; // hardcoded for apple
-  const apiKey = "pk_8b66a7c668ad437c92721186d102732d"; // Replace YOUR_API_TOKEN with your actual IEX Cloud API token
+export async function fetchFilteredData(name, range) {
+  const apiUrl = `${baseUrl}/stock/${name}/chart/${range}?token=${apiKey}`;
 
   try {
-    const response = await axios.get(apiUrl, { params: { token: apiKey } });
+    const response = await axios.get(apiUrl);
     const data = await response.data;
     return data;
   } catch (error) {
-    console.error("Error fetching stock data:", error.message);
+    toast.error("Please search by stock symbol");
+    throw new Error(error.message);
   }
 }
 
-export async function fetchTodayStockData({ name }) {
-  const apiKey = "pk_8b66a7c668ad437c92721186d102732d";
-  const apiUrl = `https://cloud.iexapis.com/stable/stock/${name}/quote?token=${apiKey}`;
+export async function fetchTodayStockData(name) {
+  const apiUrl = `${baseUrl}/stock/${name}/quote?token=${apiKey}`;
 
   try {
     const response = await axios.get(apiUrl);
@@ -23,7 +25,7 @@ export async function fetchTodayStockData({ name }) {
     console.log(data);
     return data;
   } catch (error) {
-    console.error("Error fetching todays stock data:", error.message);
-    throw error;
+    toast.error("Please search by stock symbol");
+    throw new Error(error.message);
   }
 }

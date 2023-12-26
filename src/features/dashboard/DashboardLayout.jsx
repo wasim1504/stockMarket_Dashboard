@@ -17,16 +17,13 @@ const StyledDashboardLayout = styled.div`
   gap: 2.4rem;
 `;
 
-function DashboardLayout() {
-  const { filterData, isLoading: isLoading1 } = useFilterStocks();
-  const { todaysData, isLoading: isLoading2 } = useTodaysData();
-  // const { confirmedStays, isLoading: isLoading2, numDays } = useRecentStays();
-  // const { cabins, isLoading: isLoading3 } = useCabins();
+function DashboardLayout({ query }) {
+  const { filterData, isLoading: isLoading1 } = useFilterStocks(query);
+  const { todaysData, isLoading: isLoading2 } = useTodaysData(query);
 
-  // if (isLoading1 || isLoading2 || isLoading3) return <Spinner />;
   if (isLoading1 || isLoading2) return <Spinner />;
   // console.log(filterData);
-  console.log(todaysData);
+  // console.log(todaysData);
 
   return (
     <StyledDashboardLayout>

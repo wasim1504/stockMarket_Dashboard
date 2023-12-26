@@ -7,7 +7,7 @@ import {
 
 // import { searchSymbol } from "../../services/stockList";
 
-export function useFilterStocks() {
+export function useFilterStocks(query) {
   const [searchParams] = useSearchParams();
 
   const numMonths = !searchParams.get("last")
@@ -16,17 +16,17 @@ export function useFilterStocks() {
   const range = `${numMonths}m`;
 
   const { isLoading, data: filterData } = useQuery({
-    queryFn: () => fetchFilteredData({ name: "AAPL", range }),
-    queryKey: ["filterData", "AAPL", range],
+    queryFn: () => fetchFilteredData(query, range),
+    queryKey: ["filterData", query, range],
   });
 
   return { isLoading, filterData };
 }
 
-export function useTodaysData() {
+export function useTodaysData(query) {
   const { isLoading, data: todaysData } = useQuery({
-    queryFn: () => fetchTodayStockData({ name: "AAPL" }),
-    queryKey: ["todaysData", "AAPL"],
+    queryFn: () => fetchTodayStockData(query),
+    queryKey: ["todaysData", query],
   });
   return { isLoading, todaysData };
 }
