@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import SignupForm from "../features/authentication/SignupForm";
 import Heading from "../ui/Heading";
+import Logo from "../ui/Logo";
 
 const SignupLayout = styled.main`
   min-height: 100vh;
@@ -15,6 +16,7 @@ const SignupLayout = styled.main`
 function SignUp() {
   return (
     <SignupLayout>
+      <Logo />
       <Heading as="h4">Create your account</Heading>
       <SignupForm />
     </SignupLayout>

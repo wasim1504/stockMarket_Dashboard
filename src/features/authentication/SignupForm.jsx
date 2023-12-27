@@ -81,14 +81,14 @@ function SignupForm() {
       </FormRowVertical>
 
       <FormRowVertical>
-        {/* type is an HTML attribute! */}
+        <Button size="large" disabled={isLoading}>
+          Sign up
+        </Button>
+      </FormRowVertical>
+      <FormRowVertical>
         <p>
           Already a user? <Link to="/login">Sign in</Link>
         </p>
-
-        <Button size="large" disabled={isLoading}>
-          Create new user
-        </Button>
       </FormRowVertical>
     </Form>
   );

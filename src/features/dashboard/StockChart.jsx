@@ -21,7 +21,7 @@ const StyledSalesChart = styled(DashboardBox)`
   }
 `;
 
-function SalesChart({ filterData, isLoading }) {
+function StockChart({ filterData, isLoading }) {
   const { isDarkMode } = useDarkMode();
 
   if (isLoading) return <Spinner />;
@@ -102,4 +102,4 @@ function SalesChart({ filterData, isLoading }) {
   );
 }
 
-export default SalesChart;
+export default StockChart;

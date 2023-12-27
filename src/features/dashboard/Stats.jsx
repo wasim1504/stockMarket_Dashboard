@@ -1,33 +1,36 @@
-import { HiOutlineBanknotes, HiOutlineCalendarDays } from "react-icons/hi2";
+import { HiOutlineBanknotes, HiOutlineBuildingLibrary } from "react-icons/hi2";
 import { RiMoneyDollarCircleLine } from "react-icons/ri";
 import Stat from "./Stat";
 
-function Stats({ latestTime, marketCap, iexOpen, iexClose }) {
+function Stats({ companyName, marketCap, iexOpen, iexClose }) {
+  const formattedMarketCap = (marketCap / 1000000000).toFixed(2);
+  const open = !iexOpen ? "Insufficient data" : iexOpen;
+  const close = !iexClose ? "Insufficient data" : iexClose;
   return (
     <>
       <Stat
-        title="Opening Price"
-        color="blue"
-        icon={<HiOutlineBanknotes />}
-        value={iexOpen}
+        title="companyName"
+        color="yellow"
+        icon={<HiOutlineBuildingLibrary />}
+        value={companyName}
       />
       <Stat
-        title="Closing Price"
+        title="Last opened"
+        color="blue"
+        icon={<HiOutlineBanknotes />}
+        value={open}
+      />
+      <Stat
+        title="Last closed"
         color="green"
         icon={<HiOutlineBanknotes />}
-        value={iexClose}
+        value={close}
       />
       <Stat
         title="Market Cap"
         color="indigo"
         icon={<RiMoneyDollarCircleLine />}
-        value={marketCap}
-      />
-      <Stat
-        title="Last opened"
-        color="yellow"
-        icon={<HiOutlineCalendarDays />}
-        value={latestTime}
+        value={marketCap ? `${formattedMarketCap} B` : "Insufficient data"}
       />
     </>
   );
