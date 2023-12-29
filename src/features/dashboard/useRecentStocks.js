@@ -12,7 +12,7 @@ export function useFilterStocks(query) {
   const [searchParams] = useSearchParams();
 
   const numMonths = !searchParams.get("last")
-    ? 1
+    ? 3
     : Number(searchParams.get("last"));
   const range = `${numMonths}m`;
 
