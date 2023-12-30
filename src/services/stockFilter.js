@@ -1,7 +1,7 @@
 import axios from "axios";
 import toast from "react-hot-toast";
 const baseUrl = "https://cloud.iexapis.com/stable";
-const apiKey = "pk_8b66a7c668ad437c92721186d102732d";
+const apiKey = "pk_ae81ce6b66064d9d90a964d771dcb026";
 
 export async function fetchFilteredData(name, range) {
   const apiUrl = `${baseUrl}/stock/${name}/chart/${range}?token=${apiKey}`;

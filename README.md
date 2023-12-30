@@ -14,24 +14,19 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-### `npm test`
+First page is login (user has to login to view dashboard if they already have account else they can go to sign up page)
+after sign they will be propmpted to sign in after successfully creating account.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The data during creation of account is sent to supabase.com
+During login the entered data is verified from supabase.com
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+after successfully logged in dashboard will appear showing default stock data of apple
+there is a search bar at top to search the data of stock of their choice after entring a list will appear will stock symbol and name from which user can choose one.
+After the the stock recent name last open price last closed price and market cap will be shown
+there is a filter below search bar from which user can filtr data;
+One clicking on filter the graph will reload again to show the latest data
+For darkmmode there is a button on top for toggling between dark mode and white mode
+Beside the toggle darkmode button there is logout button for logging out the user and session will be terminated
 
 If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 

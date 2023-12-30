@@ -27,19 +27,6 @@ function Dashboard() {
     }
   }, [input]);
 
-  // const handleSearch = (e) => {
-  //   e.preventDefault();
-  //   if (input) {
-  //     const symbol = searchSymbol(input);
-  //     symbol.then((val) => {
-  //       console.log(val);
-  //       setQuery(val);
-  //     });
-
-  //     setInput("");
-  //   }
-  // };
-
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
       handleSymbolSelect();
@@ -47,7 +34,7 @@ function Dashboard() {
   };
   const handleSymbolSelect = (symbol) => {
     setQuery(symbol);
-    setInput(""); // Clear the input field after selection
+    setInput("");
   };
 
   return (
