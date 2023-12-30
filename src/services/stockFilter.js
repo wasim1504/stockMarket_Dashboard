@@ -30,12 +30,15 @@ export async function fetchTodayStockData(name) {
 
 export async function searchSymbol(query) {
   try {
-    const url = `https://cloud.iexapis.com/stable/search/${query}?token=${apiKey}`;
+    const url = `${baseUrl}/search/${query}?token=${apiKey}`;
     const response = await fetch(url);
     const data = await response.json();
     console.log(data);
-    if (!data) return toast.error("Stock information not found");
-    return data[0].symbol;
+    if (!data) {
+      return toast.error("Stock information not found");
+    }
+    // const symbols = data.map((item) => item.symbol);
+    return data;
   } catch (err) {
     throw new Error("Error fetching search symbol", err.message);
   }

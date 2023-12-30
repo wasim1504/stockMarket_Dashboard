@@ -3,10 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import {
   fetchFilteredData,
   fetchTodayStockData,
-  searchSymbol,
 } from "../../services/stockFilter";
-
-// import { searchSymbol } from "../../services/stockList";
 
 export function useFilterStocks(query) {
   const [searchParams] = useSearchParams();
@@ -30,12 +27,4 @@ export function useTodaysData(query) {
     queryKey: ["todaysData", query],
   });
   return { isLoading, todaysData };
-}
-
-export function useSearchSymbol(input) {
-  const { isLoading, data: symbol } = useQuery({
-    queryFn: () => searchSymbol(input),
-    queryKey: ["symbol", input],
-  });
-  return { isLoading, symbol };
 }
